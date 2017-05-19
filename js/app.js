@@ -2,9 +2,7 @@
 ;(function () {
     'use strict';
 
-    angular.module('processApp', [
-        'blueimp.fileupload'
-    ])
+    angular.module('processApp', [])
 
 }());
 

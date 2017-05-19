@@ -2,31 +2,39 @@
 (function () {
     'use strict';
 
-	function UploadController ($scope, $http) {
-		var $ctrl = this;
+	function UploadController ($scope, $http, $sce) {
+		var ctrl = this;
+
+		ctrl.getMedia = function() {
+			// return new Promise((resolve, reject) => {
+			// 	$http.get(url, )
+			// });
+			console.log("getMedia");
+		}
 
 		$('#fileupload').fileupload({
 	        dataType: 'json',
 	        formData: {
-	     	   access_token: '557deab0c0daafd795940ed2c0b22049df04d3e2da943225dc4c45fce313e3e4'
+	     	   api_password: '080fcacb911fc78b96a1fa33ea1a6cd94640b0b36d90c6c00576b8c162125c78'
 	        },
 	        add: function (e, data) {
 	            $scope.hashId   = '';
 	            $scope.progress = 0;
 	            $scope.status   = 'uploading';
-	            $scope.url      = 'https://upload.wistia.com';
+	            $scope.url      = '';
 
 	            data.submit();
 	        },
         	done: function (e, data) {
             	if (data.result.hashed_id != '') {
               		$scope.hashId = data.result.hashed_id;
-              		// $ctrl.checkStatus();
+              		console.log($scope.hashId);
+              		console.log(data);
+              		ctrl.getMedia();
             	}
           	},
 	        progressall: function (e, data) {
 	        	if (data.total > 0) {
-	            	console.log($scope.progress);
 		            $scope.$apply(function() {
 		            	$scope.progress = parseInt(data.loaded / data.total * 100, 10);
 		            });
@@ -38,7 +46,7 @@
  angular.module('processApp')
     .component('uploader', {
   		templateUrl: 'uploader.html',
-  		controller: ['$scope', '$http', UploadController],
+  		controller: ['$scope', '$http', '$sce', UploadController],
 	});
 
 }());
