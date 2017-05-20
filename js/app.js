@@ -5,5 +5,3 @@
     angular.module('processApp', [])
 
 }());
-
-console.log("app.js");
