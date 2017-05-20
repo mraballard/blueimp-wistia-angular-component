@@ -1,0 +1,1 @@
+# blueimp-wistia-angular-component
