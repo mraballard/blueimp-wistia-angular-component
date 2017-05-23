@@ -13,7 +13,7 @@
 		var $ctrl = this;
 
 		// Add Wistia api_password here
-		$ctrl.api_password = '080fcacb911fc78b96a1fa33ea1a6cd94640b0b36d90c6c00576b8c162125c78';
+		$ctrl.api_password = 'your api password here';
 
 		// Function calls Wistia API to retrieve media after upload completes.
 		$ctrl.getMedia = function() {
